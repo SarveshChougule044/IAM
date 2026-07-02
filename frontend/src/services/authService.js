@@ -13,11 +13,9 @@ const parseResponse = async (response) => {
 // Auth: signup & login
 
 export const signupUser = async (payload) => {
-  const response = await fetch("/api/auth/signup", {
+  const response = await fetch(`${API_BASE}/api/auth/signup`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   });
 
