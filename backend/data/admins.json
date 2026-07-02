@@ -1,0 +1,11 @@
+[
+  {
+    "id": "4bfebaf1-74e5-4671-8f8c-d86d0a1cc7e1",
+    "email": "vrunda.admin@iamshield.com",
+    "passwordHash": "$2b$12$o8/GdCWzuWgKzBj7F9N9TuVj6OYGGSdydschvwfppfhMYpWwTWvf6",
+    "name": "Admin User",
+    "role": "admin",
+    "createdAt": "2026-06-30T06:23:51.480Z",
+    "updatedAt": "2026-06-30T06:23:51.480Z"
+  }
+]
