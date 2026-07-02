@@ -29,14 +29,6 @@ export const loginUser = async (payload) => {
   return parseResponse(response);
 };
 
-  if (!response.ok) {
-    const errorData = await response.json();
-    throw new Error(errorData.message || "Login failed");
-  }
-
-  return response.json();
-}
-
 
 
 
