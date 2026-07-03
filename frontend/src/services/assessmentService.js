@@ -4,6 +4,7 @@
 const API_BASE = import.meta.env.VITE_API_BASE;
 
 async function handleResponse(response) {
+  // Be safe if the body is empty (304, 204, etc.)
   const data = await response.json().catch(() => ({}));
 
   if (!response.ok) {
@@ -17,7 +18,8 @@ async function handleResponse(response) {
 export async function getQuestionnaire() {
   const response = await fetch(`${API_BASE}/api/assessment/questions`, {
     method: "GET",
-    // add headers or credentials here if your backend expects auth
+    // Add headers/credentials if your backend expects auth
+    // headers: { Authorization: `Bearer ${token}` },
   });
 
   return handleResponse(response);
@@ -29,7 +31,7 @@ export async function submitQuestionnaire(answers) {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ answers }),
-    // add auth header / credentials if needed
+    // headers: { Authorization: `Bearer ${token}` },
   });
 
   return handleResponse(response);
