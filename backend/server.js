@@ -20,17 +20,23 @@ app.use(helmet());
 // Remove Express fingerprint
 app.disable("x-powered-by");
 
-// CORS: allow your Vite dev and future frontend
+// CORS: allow both dev and deployed frontend
+const allowedOrigins = [
+  "http://localhost:5173",           // Vite dev
+  "https://iam00.onrender.com",      // Render frontend
+];
+
 app.use(
   cors({
-    origin: process.env.CLIENT_ORIGIN || "http://localhost:5173",
+    origin: allowedOrigins,
+    credentials: true,
   })
 );
 
 // Rate limiting on all /api routes
 const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 100,
+  max: 1000,
   message: {
     success: false,
     message: "Too many requests, please try again later.",
@@ -57,7 +63,7 @@ app.use((req, res, next) => {
 });
 
 // ----------------------
-// Body parsing
+// Body parsing + sanitization
 // ----------------------
 app.use(express.json());
 
