@@ -1,4 +1,5 @@
 // frontend/src/services/authService.js
+const API_BASE = import.meta.env.VITE_API_BASE;
 
 const parseResponse = async (response) => {
   const data = await response.json().catch(() => ({}));
